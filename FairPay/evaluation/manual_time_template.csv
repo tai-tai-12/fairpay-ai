@@ -1,0 +1,7 @@
+participant_id,scenario_id,method,task_order,seconds_to_prepare,amount_correct,error_count,confidence_1_to_5,notes
+P01,N01,manual,1,,,,,
+P01,N01,fairpay,2,,,,,
+P02,N03,fairpay,1,,,,,
+P02,N03,manual,2,,,,,
+P03,A01,manual,1,,,,,
+P03,A01,fairpay,2,,,,,

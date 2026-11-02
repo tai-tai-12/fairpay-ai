@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';import http from 'node:http';import {once} from 'node:events';import {spawn} from 'node:child_process';import {harness} from './support/server.mjs';
+test('A4 health retains compatibility identifier and explicitly names current product version',{timeout:7000},async()=>{
+ const h=await harness(()=>({}));try{const r=await h.request('/api/health');assert.equal(r.body.appVersion,'1.3.2');assert.match(r.body.appVersionSemantics,/Legacy compatibility/);assert.equal(r.body.productVersion,(await fs.readFile('VERSION.txt','utf8')).trim());}finally{await h.close();}
+});
+test('A4 evaluation JSON/MD/HTML and console use served version instead of stale dev7',{timeout:10000},async()=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'sprint-a-report-test-'));let child;const version='1.9.1-synthetic-label-test';
+ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','application/json');res.end(JSON.stringify(req.url==='/api/health'?{ok:true,aiProvider:'ollama',aiConfigured:true,productVersion:version,appVersion:'1.3.2',ollamaModel:'SYNTHETIC MOCK'}:{currency_code:'USD',milestones:[]}));});
+ try{for(const name of await fs.readdir('.'))if(name.endsWith('.mjs'))await fs.copyFile(name,path.join(dir,name));await fs.cp('evaluation',path.join(dir,'evaluation'),{recursive:true});server.listen(0,'127.0.0.1');await once(server,'listening');
+ child=spawn(process.execPath,['evaluation/run.mjs','--limit=1',`--base=http://127.0.0.1:${server.address().port}`],{cwd:dir,env:{PATH:process.env.PATH},stdio:['ignore','pipe','pipe']});let log='';child.stdout.on('data',b=>log+=b);child.stderr.on('data',b=>log+=b);const timer=setTimeout(()=>child.kill(),6000);try{const [code]=await once(child,'exit');assert.equal(code,0,log);}finally{clearTimeout(timer);}
+ assert.ok(log.includes(version));for(const ext of ['json','md','html']){const text=await fs.readFile(path.join(dir,'.local-data/evaluation/latest.'+ext),'utf8');assert.ok(text.includes(version),ext);assert.ok(!text.includes('v1.9.1-dev.7'),ext);}const report=JSON.parse(await fs.readFile(path.join(dir,'.local-data/evaluation/latest.json'),'utf8'));assert.equal(report.productVersion,version);assert.equal(report.legacyAppVersion,'1.3.2');
+ }finally{if(child&&child.exitCode===null)child.kill();server.closeAllConnections();await new Promise(r=>server.close(r));await fs.rm(dir,{recursive:true,force:true});}
+});

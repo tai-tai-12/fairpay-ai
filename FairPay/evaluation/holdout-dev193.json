@@ -1,0 +1,26 @@
+{
+  "frozenAt": "2026-10-16T05:53:29.144778+00:00",
+  "provenance": "Agent-authored independent new scenarios, not expert labels; created after provider repair and before any responses; no subsequent tuning permitted.",
+  "cases": [
+    {
+      "id": "H193-01",
+      "text": "Project: Synthetic long programme. Milestone 1: Deliverable 1 for USD 130 after actual acceptance. Milestone 2: Deliverable 2 for USD 130 after actual acceptance. Milestone 3: Deliverable 3 for USD 130 after actual acceptance. Milestone 4: Deliverable 4 for USD 130 after actual acceptance. Milestone 5: Deliverable 5 for USD 130 after actual acceptance. Milestone 6: Deliverable 6 for USD 130 after actual acceptance. Milestone 7: Deliverable 7 for USD 130 after actual acceptance. Milestone 8: Deliverable 8 for USD 130 after actual acceptance. Milestone 9: Deliverable 9 for USD 130 after actual acceptance. Milestone 10: Deliverable 10 for USD 130 after actual acceptance. Milestone 11: Deliverable 11 for USD 130 after actual acceptance. Milestone 12: Deliverable 12 for USD 130 after actual acceptance. Milestone 13: Deliverable 13 for USD 130 after actual acceptance. Milestone 14: Deliverable 14 for USD 130 after actual acceptance. Milestone 15: Deliverable 15 for USD 130 after actual acceptance. Milestone 16: Deliverable 16 for USD 130 after actual acceptance. Milestone 17: Deliverable 17 for USD 130 after actual acceptance. Milestone 18: Deliverable 18 for USD 130 after actual acceptance. Milestone 19: Deliverable 19 for USD 130 after actual acceptance. Milestone 20: Deliverable 20 for USD 130 after actual acceptance. Milestone 21: Deliverable 21 for USD 130 after actual acceptance.",
+      "expected": "Explicit unsupported/incomplete refusal; no saveable analysis."
+    },
+    {
+      "id": "H193-02",
+      "text": "Project: Synthetic bilingual guide. 里程碑一：指南設計費 USD 810。客戶已支付 USD 210 訂金，僅餘 USD 600。驗收尚未確認。",
+      "expected": "No source-based gross authorization; unresolved credits must block."
+    },
+    {
+      "id": "H193-03",
+      "text": "Project: Synthetic cancellation. Milestone 1: Poster fee USD 480. The engagement was terminated before delivery and no fee is owed.",
+      "expected": "Block; older fee quote cannot authorize."
+    },
+    {
+      "id": "H193-04",
+      "text": "Project: Synthetic fixed terms. Milestone 1: Accepted report fee USD 275 after actual client acceptance. No other terms are supplied.",
+      "expected": "Source amount may be checked; outstanding is unknown without separate financial review."
+    }
+  ]
+}

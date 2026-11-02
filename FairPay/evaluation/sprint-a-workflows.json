@@ -1,0 +1,11 @@
+{
+ "provenance":"Sprint A synthetic criteria frozen before responses; not expert labels or real agreements. Model extraction and simulated human review are separate.",
+ "cases":[
+  {"id":"A2-P1","expectedReady":true,"amount":"500.00","credit":null,"acceptance":true,"source":"Synthetic Sprint A single fee. Milestone 1: Final report fee USD 500 after actual client acceptance."},
+  {"id":"A2-P2","expectedReady":true,"amount":"500.00","credit":"100.00","acceptance":true,"source":"Synthetic Sprint A credited project. Milestone 1: Final report fee USD 500 after actual client acceptance."},
+  {"id":"A2-N1","expectedReady":false,"amount":"500.00","credit":null,"ambiguousCredit":true,"acceptance":true,"source":"Synthetic Sprint A unresolved accounting. Milestone 1: Final report fee USD 500. A previous credit exists but its amount and allocation are unresolved."},
+  {"id":"A2-N2","expectedReady":false,"amount":"500.00","credit":null,"amendment":true,"acceptance":true,"source":"Synthetic Sprint A conflicting revision. Milestone 1: Final report originally USD 500. An unsigned amendment proposes USD 650; the controlling fee is unresolved."},
+  {"id":"A2-N3","expectedReady":false,"amount":"500.00","credit":null,"acceptance":false,"source":"Synthetic Sprint A acceptance pending. Milestone 1: Final report fee USD 500 after actual client acceptance."},
+  {"id":"A2-N4","expectedReady":false,"amount":"500.00","credit":"100.00","acceptance":true,"wrongAmount":true,"source":"Synthetic Sprint A exact net review. Milestone 1: Final report fee USD 500 after actual client acceptance."}
+ ]
+}

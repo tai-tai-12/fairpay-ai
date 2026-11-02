@@ -1,0 +1,17 @@
+# Local credentials and private data (never commit)
+.env
+.env.*
+!.env.example
+.local-data/
+**/.local-data/
+**/.env
+**/.env.*
+!**/.env.example
+node_modules/
+**/node_modules/
+.DS_Store
+*.log
+*.zip
+*.mp4
+*.mov
+__pycache__/

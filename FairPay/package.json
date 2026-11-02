@@ -1,0 +1,42 @@
+{
+  "name": "fairpay-ai-hackathon",
+  "version": "1.9.1-dev.8.6-sprint-b",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node --env-file=.env server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "setup": "node tools/setup.mjs",
+    "check": "node --env-file=.env tools/check-setup.mjs",
+    "eval:quick": "node evaluation/run.mjs --quick",
+    "eval:full": "node evaluation/run.mjs",
+    "eval:smoke": "node --test tests/evaluation.test.mjs",
+    "eval:holdout": "node evaluation/run.mjs --holdout",
+    "eval:stress": "node evaluation/run.mjs --stress",
+    "qa:baseline": "node tools/qa-baseline-v190.mjs",
+    "qa:verify": "npm test && npm run qa:baseline",
+    "verify:package": "node tools/verify-package-v190.mjs",
+    "test:financial-gates": "node --test --test-concurrency=2 tests/v194-mandatory-receivable.test.mjs tests/v195-financial-review-ux.test.mjs tests/v196-current-concurrency.test.mjs",
+    "qa:dev4": "npm run test:financial-gates && npm run qa:baseline && node audit/run-frozen.mjs",
+    "test:net-invoice": "node --test tests/v197-net-invoice.test.mjs",
+    "qa:dev5": "npm run test:financial-gates && npm run test:net-invoice && npm run qa:baseline && node audit/run-frozen.mjs",
+    "test:current": "node --test --test-concurrency=2 tests/v19*.test.mjs",
+    "test:legacy": "node --test tests/*.test.mjs",
+    "qa:dev6": "npm run test:current && npm run qa:baseline && node audit/run-frozen.mjs",
+    "qa:dev7": "npm run test:current && npm run eval:smoke && npm run qa:baseline && node audit/run-frozen.mjs",
+    "qa:dev8": "npm run qa:dev7",
+    "qa:dev8.2": "npm run qa:dev8",
+    "qa:dev8.3": "npm run qa:dev8.2",
+    "qa:dev8.4": "npm run qa:dev8.3",
+    "qa:dev8.5": "npm run qa:dev8.4",
+    "scan:release": "python3 tools/scan-clean.py",
+    "qa:dev8.6": "npm run qa:dev8.5",
+    "verify:candidate": "python3 tools/verify-clean.py",
+    "qa:sprint-a": "npm run qa:dev8.6",
+    "qa:sprint-b": "npm run qa:sprint-a"
+  },
+  "license": "MIT"
+}

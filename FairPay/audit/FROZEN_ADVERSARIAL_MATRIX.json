@@ -1,0 +1,13 @@
+{
+  "version": "2026-10-16-frozen-before-repair",
+  "testing_scope": "Local deterministic policy and mock PayPal; synthetic data, no external payments",
+  "cases": [
+    {"id":"A01","expected":"blocked","reason":"Previous paid deposit must not be reinvoiced from gross fee evidence","index":0,"count":1,"text":"Project: Orion Logo. Milestone 1: The final logo artwork fee is USD 1000 upon client acceptance. The client already paid a USD 300 deposit toward this exact milestone. Only USD 700 remains outstanding on the agreed fee."},
+    {"id":"A02","expected":"blocked","reason":"Global prepayment cannot disappear under numbered per-milestone slicing","index":0,"count":2,"text":"Project: Orion Brand Pack. General billing terms: The customer previously paid a USD 200 retainer allocated to Milestone 1. Do not invoice the retainer again. Milestone 1: Brand strategy for USD 600 due after acceptance. Milestone 2: Visual identity for USD 400 due after acceptance."},
+    {"id":"A03","expected":"blocked","reason":"Unresolved mutually inconsistent fee evidence","index":0,"count":1,"text":"Project: Orion Design. Milestone 1: The agreed design fee is USD 500. A later signed message names USD 700 for this identical deliverable. Both terms remain active until the parties agree which governs."},
+    {"id":"A04","expected":"blocked","reason":"Cancelled contract with zero fee owed must block draft regardless of old fee quote","index":0,"count":1,"text":"Project: Orion Design. Milestone 1: Fixed fee USD 500 for completed deliverable. The customer cancelled the contract before delivery and no fee is owed."},
+    {"id":"A05","expected":"blocked","reason":"Unmet contract prerequisite must block draft","index":0,"count":1,"text":"Project: Orion Design. Milestone 1: Fee USD 500 after acceptance. The customer has rejected the deliverable and explicitly declined acceptance."},
+    {"id":"A06","expected":"clear","reason":"Clean agreed fixed-fee milestones remain eligible for manual acceptance","index":0,"count":1,"text":"Project: Orion Design. Milestone 1: Fixed fee USD 500 for a completed project delivered and accepted in writing."},
+    {"id":"A07","expected":"clear","reason":"Future unpaid deposit is not a previously collected credit","index":0,"count":1,"text":"Project: Orion Design. Milestone 1: The approved fee is USD 500. A deposit will be requested only after the parties approve the final deliverable; none has been paid."}
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "width": 390,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:51041/\nCall log:\n  - navigating to \"http://127.0.0.1:51041/\", waiting until \"networkidle\"\n"
+  },
+  {
+    "width": 800,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:51041/\nCall log:\n  - navigating to \"http://127.0.0.1:51041/\", waiting until \"networkidle\"\n"
+  },
+  {
+    "width": 900,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:51041/\nCall log:\n  - navigating to \"http://127.0.0.1:51041/\", waiting until \"networkidle\"\n"
+  },
+  {
+    "width": 1440,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:51041/\nCall log:\n  - navigating to \"http://127.0.0.1:51041/\", waiting until \"networkidle\"\n"
+  }
+]

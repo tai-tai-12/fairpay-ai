@@ -1,0 +1,88 @@
+{
+  "files": [
+    {
+      "path": "evaluation/cases.json",
+      "sha256": "cb555401f29a79f8e452862efad4ee4d24bab5db0045f8c82eabe858d338328f"
+    },
+    {
+      "path": "evaluation/holdout.json",
+      "sha256": "d4a8055ffad8e38143bbac0f080b70dbd69ec9a55833309a3db48ea847451add"
+    },
+    {
+      "path": "evaluation/manual_time_template.csv",
+      "sha256": "09906e641c45f801a22d1c9fe24b29f73eb5de14ed48087ca2105452583dc0b1"
+    },
+    {
+      "path": "evaluation/run.mjs",
+      "sha256": "d1d564cc775bb579dc51490c76ce9574d38487b6e3cef75be7093879c17f3126"
+    },
+    {
+      "path": "evaluation/scorer.mjs",
+      "sha256": "7b3dfab54bf6e0f404c98bf094c3029015b25db90e86298d3f867a0fa3551183"
+    },
+    {
+      "path": "evaluation/stress-v13.json",
+      "sha256": "fc3270ebc58bc7a336e42eb0f5fbc2b30e1be01253cf3c6791d12acfc847e1d2"
+    },
+    {
+      "path": "handoff/reference_baselines/full_28_v1.3.2.json",
+      "sha256": "a99b84e3aea42fdef417908ad536239924bc8e7ae5ce3e1436d00749ddd13bca"
+    },
+    {
+      "path": "handoff/reference_baselines/prior_holdout_12_v1.3.2.json",
+      "sha256": "2d61a1679a4f42835c07beb24096fcd99abfc409eb8abd1ad4b1bc934c8f547f"
+    },
+    {
+      "path": "tests/ai-amount-safety.test.mjs",
+      "sha256": "4cbe863d4531ae47b2aa8b92169ecb5f6f442483d052212b08a8aed0d2a767a9"
+    },
+    {
+      "path": "tests/evaluation.test.mjs",
+      "sha256": "955e29c2b48f0f6d6799049e950d4a7a9ea6a486b45eec847df8f218640c119c"
+    },
+    {
+      "path": "tests/ollama-flow.test.mjs",
+      "sha256": "80d553a52c79aea2c0278c3d5f650c175aa91eebad39f9d88f9ab635197206f0"
+    },
+    {
+      "path": "tests/payment-readiness.test.mjs",
+      "sha256": "cabd845f360d8c37f902bbf6b718b9589b1feda2665d67e5b1965621ca170f73"
+    },
+    {
+      "path": "tests/project-dashboard.test.mjs",
+      "sha256": "594a6b8f90e3ca177fa7cfbd1f767847a4f1b4aa3a0500f5d7e9172749112979"
+    },
+    {
+      "path": "tests/v1-actions-and-projects.test.mjs",
+      "sha256": "b331bf9d1c062ad5fc5ccb62d5acc807e61beee9534e0236ac6ce49dd0f6c5e5"
+    },
+    {
+      "path": "tests/v1-api.test.mjs",
+      "sha256": "5f938adc4fa905d3e4672f7a4149dcbdea2960f302fe715ccf7173943821c655"
+    },
+    {
+      "path": "tests/v12-api-safety.test.mjs",
+      "sha256": "169b480c07c4a279282c1f1f6f2d0631947dc24bb5f99b94921ad3ed7409280a"
+    },
+    {
+      "path": "tests/v12-financial-policy.test.mjs",
+      "sha256": "93a741d0f4facff0dbf4840a701a9d1b923c13bec701431f0eee47df083d2309"
+    },
+    {
+      "path": "tests/v13-reliability.test.mjs",
+      "sha256": "ce048fb99db71f94e62042cd4d83e71bb715ba052e9fb5922d8bc74e92c23d46"
+    },
+    {
+      "path": "tests/v131-amendment-hotfix.test.mjs",
+      "sha256": "3ca5f816fddf11fe7013512213d350906ee54197f2980a0537ae128e70435e95"
+    },
+    {
+      "path": "tests/v132-unfinalized-amendment.test.mjs",
+      "sha256": "02395debf0c226a5fa101765c085ba30438d1b2dd4a33c308f384d001f088065"
+    },
+    {
+      "path": "tests/validation.test.mjs",
+      "sha256": "ca0fb2d5983e48ef2770726a63f1c8e1826eac0f720ae0d3d95e823876a27b01"
+    }
+  ]
+}
