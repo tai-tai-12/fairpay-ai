@@ -28,6 +28,5 @@ Start with the [FairPay AI overview](../README.md) or watch the [three-minute de
 - [Known limitations](../FairPay/KNOWN_LIMITATIONS.md)
 - [Focused QA and historical test results](../FairPay/QA_STATUS.md)
 - [Sprint B engineering scope](../FairPay/docs/sprint-b/FINAL_SCOPE_AND_DEMO.md)
-- [Archived drafts and engineering notes](archive/README.md)
 
-The archive contains dated records. For current installation and testing instructions, use the guides linked above.
+For current installation and testing instructions, use the guides linked above.

@@ -15,7 +15,6 @@ FairPay AI 是一套以合約證據為基礎的帳務審核原型。它結合 AI
 | 了解程式模組及資料流程 | [系統架構](../../FairPay/ARCHITECTURE.md) |
 | 檢查測試結果、驗證範圍與限制 | [驗證與限制](../VALIDATION.md) |
 | 了解資料保存及財務安全機制 | [安全與隱私](../../FairPay/SECURITY_AND_PRIVACY.md) |
-| 查閱先前的文件與工程紀錄 | [歷史文件](../archive/README.md) |
 
 ## 產品介面
 

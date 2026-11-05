@@ -32,4 +32,4 @@ These commands check a **focused** regression suite, file hashes, and obvious ac
 
 **Build identifiers:** the current internal application identifier is `1.9.1-dev.8.6-sprint-b`, while the submitted video is V31. The API `appVersion` field is a separate legacy compatibility marker; do not rewrite it for presentation purposes.
 
-Additional release and test records are available in the [documentation archive](../docs/archive/README.md).
+For current supporting documentation, see the [documentation index](../docs/README.md).
