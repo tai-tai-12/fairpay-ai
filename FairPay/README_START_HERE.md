@@ -1,21 +1,35 @@
-# FairPay dev8.6 Sprint B Clean Candidate
-NON-RELEASE / SANDBOX ONLY. 本包不含私人資料、Git、Node binary 或模型；Node >=22 必須另行安裝，Python3 用於驗證／歷史測試 runner。App 使用 Node 內建模組，無需 npm install。
+# FairPay AI · Local build guide
 
-在全新空白資料夾解壓，進入 FairPay：
-```sh
-node --version
-python3 tools/verify-clean.py
+This is the runnable **local Sandbox prototype**, not a production payment app. For a quick introduction, begin with the [root README](../README.md), then choose the [User Guide](../docs/USER_GUIDE.md) or [Developer Guide](../docs/DEVELOPER_GUIDE.md).
+
+## First run
+
+Install **Node.js 22+** and run these commands from this `FairPay/` folder.
+
+```bash
 npm run setup
 npm start
 ```
-手動開啟 http://127.0.0.1:3000 。初始0 projects正常；不需任何舊 FairPay 目錄。setup只建立本資料夾空白credentials設定，不覆寫既有設定。不要複製舊資料或真實credentials。本工作包禁止所有真實PayPal寫入。
 
-選用AI：本機Ollama及qwen3:4b-instruct需另行安裝／下載；沒有模型時可看UI和輸入合成範例，不能宣稱完成抽取。Optional OpenAI會把合約送到雲端，本次不設定或測試。PayPal Sandbox API另需帳號／網路／獨立授權；本次僅mock，不要求填密鑰。
+Open **http://127.0.0.1:3000**. Fresh installations start with **zero projects**. On **Overview**, select **Preview two safe billing decisions**. These controls only populate synthetic examples. They do not run the model, save projects, authorize billing, create drafts, or confirm a credit.
 
-QA: `npm run qa:dev8.5` 是focused suite，不是完整歷史測試；`npm test` 保留所有舊測試，已知不綠。詳QA_STATUS.md。測試不應使用真實資料。Ctrl-C停止server；本版.local-data只屬本版，勿分享。
+## Optional AI and Sandbox setup
 
-完整離線 automated QA: `npm run qa:dev8.6` (mock providers)。需要 Python3 的 manifest/scanner 不會下載任何服務。Clean Candidate 保留舊 inventory驗證以展示歷史差異；`verify:package`預期失敗，`verify:candidate`才是本包完整性檢查。不要以重建舊hash掩飾差異。
+- For real AI extraction, install and start local Ollama and pull the model with `ollama pull qwen3:4b-instruct`.
+- To test PayPal integration, provide **your own PayPal Sandbox** credentials in the untracked `.env`, only for deliberate actions on new fictional data.
+- Never enter real client agreements or live credentials. Do not use this app for real payments or public hosting.
+- No historical invoice ID, local ledger, or PayPal account data is bundled. A fresh installation cannot reproduce the video's private $400 Sandbox draft read-back.
 
-Final Sprint B current QA: `npm run qa:sprint-a`. Read docs/sprint-a for current-contract tests, model false-block denominators and existing-draft read-only checklist. Real linkage is INCOMPLETE; no PayPal write is authorized. `productVersion` is current; `appVersion` is compatibility-only.
+## Check the source
 
-Sprint B final demo instructions: `docs/sprint-b/FINAL_SCOPE_AND_DEMO.md`. The overview provides two fictional examples, neither a real PayPal transaction. Onboarding and local balance display changes do not alter backend financial policy. Browser execution may require your Mac if administrator policy blocks automated navigation.
+```bash
+npm run qa:sprint-b
+npm run verify:candidate
+npm run scan:release
+```
+
+These commands check a **focused** regression suite, file hashes, and obvious accidental-secret patterns. They do not certify production readiness or prove remote bank settlement. `npm test` invokes an older broader suite with documented failures. See [Validation](../docs/VALIDATION.md) and [QA history](QA_STATUS.md).
+
+**Build identifiers:** the current internal application identifier is `1.9.1-dev.8.6-sprint-b`, while the submitted video is V31. The API `appVersion` field is a separate legacy compatibility marker; do not rewrite it for presentation purposes.
+
+The former multi-Sprint Chinese handoff text is archived under [Historical documents](../docs/archive/README.md) and is not the current run instruction.

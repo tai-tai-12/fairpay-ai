@@ -10,9 +10,9 @@ FairPay AI helps users review agreement terms, check billing amounts against the
 
 ## Product preview
 
-![FairPay AI agreement evidence review, captured from the final V31 product demo](assets/fairpay-v31-agreement-demo.jpg)
+![FairPay AI Agreements interface showing source evidence review](assets/fairpay-v31-agreement-demo.jpg)
 
-*Agreement evidence review shown in the [V31 demo video](https://www.youtube.com/watch?v=pivk3KyXpEQ). This is a recorded demonstration frame, not a hosted live app.*
+*Agreement evidence review shown in the [V31 demo video](https://www.youtube.com/watch?v=pivk3KyXpEQ). This is a crop of the actual recorded product interface, with the video presentation bars removed. It is not a hosted live app.*
 
 ## Product overview
 
@@ -44,7 +44,7 @@ These are **separate demonstration scenarios**, not a single completed or bank-v
 | `appVersion: 1.3.2` | Legacy API compatibility field | Not the current product release number |
 | Release status | Local hackathon prototype | Not deployed for real payments |
 
-Some engineering files contain older version names because they preserve earlier test history. Use this root README and the [Developer Guide](docs/DEVELOPER_GUIDE.md) for current setup instructions.
+Older version numbers in test filenames, historical manifests, and the legacy API field are retained for compatibility and audit history. The obsolete `v0.4` environment-template comment and stale handoff instructions were corrected in this documentation cleanup. Use this README and the [Developer Guide](docs/DEVELOPER_GUIDE.md) for current setup instructions.
 
 ## Quick start
 
@@ -99,7 +99,7 @@ For a step-by-step first-time walkthrough, use the [User Guide](docs/USER_GUIDE.
 
 ## Evidence and limitations
 
-The release README previously reported **161 passing checks in the focused QA suite**. That is **not** a claim that all historical tests pass. Historical failures, incomplete browser checks, and provider-evidence boundaries remain documented. The documentation cleanup **does not rerun tests**.
+The release documentation reports **161 passing checks in the focused QA suite**. That is **not** a claim that all historical tests pass. Historical failures, incomplete browser checks, and provider-evidence boundaries remain documented. This repository documentation update **does not itself establish a new test run**. Run the commands in [Validation & Limitations](docs/VALIDATION.md) to reproduce the focused checks.
 
 The video depicts a separate existing Sandbox DRAFT read-back. Earlier isolated engineering QA **did not independently access the private Sandbox invoice**, so its remote verification result remains recorded as **incomplete**. The synthetic credit is not a bank-confirmed deposit. See [Validation & Limitations](docs/VALIDATION.md) and [Security & Privacy](FairPay/SECURITY_AND_PRIVACY.md).
 

@@ -2,6 +2,13 @@
 
 Watch the **[final three-minute product demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)** first, then choose the guide for your role.
 
+**Recommended reading order for judges**
+
+1. Watch the [2:58 product demo](https://www.youtube.com/watch?v=pivk3KyXpEQ).
+2. Read the [product overview](../README.md#product-overview) and [User Guide](USER_GUIDE.md) to understand the three real screens.
+3. Use [Developer Guide](DEVELOPER_GUIDE.md) for the runnable build and reproducible sample.
+4. Check [Validation & Limitations](VALIDATION.md) to separate recorded evidence, test coverage, and known gaps.
+
 Choose the starting point for your role.
 
 | Audience | Main guide | What it covers |
@@ -23,3 +30,7 @@ Choose the starting point for your role.
 - [繁體中文使用指引](zh/GET_STARTED_ZH.md)
 
 Existing documents under `FairPay/` are integrity-checked release artifacts and preserve historical checkpoints. The [Validation & Limitations](VALIDATION.md) page explains differences between earlier QA results and the final demo.
+
+**Preservation note:** historical candidate source and versioned test assets under `FairPay/` remain intact. Some original handoff notes are archived rather than removed.
+
+The original internal handoff note remains available in [Archived handoff](archive/FairPay_README_START_HERE_HISTORICAL.md). It is retained for provenance, not recommended as current setup instructions.

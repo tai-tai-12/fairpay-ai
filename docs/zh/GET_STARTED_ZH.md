@@ -40,3 +40,5 @@ npm start
 - 本專案只供**本機單人與合成資料**測試，不能用真實合約、真實資金或正式收款。
 - 影片中的 $400 Sandbox DRAFT 屬於另一個既有範例。公開原始碼不包含它的私有 ID、帳務資料或登入憑證。
 - 若要重現功能，請以 [Developer Guide](../DEVELOPER_GUIDE.md) 為主。不要依照 Archive 的舊草稿或已過時的內部 QA 指令操作。
+
+**歷史工程交接紀錄：** [原版 README_START_HERE](../archive/FairPay_README_START_HERE_HISTORICAL.md)。目前請以最新版 Developer Guide 為準。

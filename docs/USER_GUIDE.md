@@ -38,6 +38,16 @@ These preview actions do **not** call PayPal, analyze with AI, create a project,
 
 The video presents three separate demonstrations. You should **not** expect a fresh installation to contain the historical $400 invoice or the recorded synthetic financial ledger.
 
+## One-minute reviewer walkthrough
+
+1. Start the local server with Node.js 22+ and open `http://127.0.0.1:3000`.
+2. On **Overview**, open **Preview two safe billing decisions**. The clear-fee example shows $500 gross, $100 illustrative credit, and $400 calculated net. It does not record a payment.
+3. Choose **Try clear-fee sample** to prefill editable text in **Agreements**. The text is not a model result.
+4. If Ollama and `qwen3:4b-instruct` are running, click **Analyze**, then compare proposals against their source excerpts.
+5. Inspect **Payments** only after creating a new synthetic project and completing required human review. Never use a real contract or send an invoice.
+
+**Expected limitation:** the recorded $400 PayPal Sandbox DRAFT is in a different historical sample project and is **not present** on a fresh installation. This is intentional, not a missing demo asset.
+
 ## What the financial statuses mean
 
 - **Agreement amount** refers to source-supported contract terms.

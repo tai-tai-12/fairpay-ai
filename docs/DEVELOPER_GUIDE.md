@@ -91,7 +91,7 @@ See [Architecture](../FairPay/ARCHITECTURE.md) and [Security & Privacy](../FairP
 - Application build is `1.9.1-dev.8.6-sprint-b` in `package.json` and `VERSION.txt`.
 - The public demo video's **V31** label is a video editing version, not the application build.
 - `appVersion: 1.3.2` in `/api/health` is a legacy compatibility field. Use `productVersion` for the candidate identifier.
-- A `v0.4` comment in `.env.example` and historical `qa:dev*` scripts were retained intentionally. Do not replace version identifiers in test fixtures or manifests merely to make their labels look new.
+- The outdated `v0.4` header in `.env.example` has been removed. Historical `qa:dev*` scripts and versioned test names remain for provenance. Do not change package build identifiers, the legacy `/api/health` compatibility field, frozen test names, or the historical `SOURCE_SHA256_MANIFEST.json` merely to make labels look new.
 - Use **`npm run qa:sprint-b`** for the documented focused check. Running **`npm test`** triggers the historical suite, which includes documented failing cases.
 
 ## Run focused checks
@@ -106,8 +106,19 @@ npm run scan:release
 
 The earlier release reported **161 passing focused checks**, but this is **not** an all-green full historical suite. Some legacy tests still have documented failures. Provider fault tests use synthetic mocks. This documentation-only change has **not rerun** the checks. See [Validation & Limitations](VALIDATION.md).
 
-**Integrity note.** `FairPay/CANDIDATE_MANIFEST.json` stores hashes for released candidate files. Do not edit or move files inside `FairPay/` without intentionally revalidating the package. This documentation update preserves those files exactly.
+**Integrity note.** `FairPay/CANDIDATE_MANIFEST.json` stores hashes for released candidate files. Do not edit or move files inside `FairPay/` without intentionally revalidating the package. This patch updates only selected documentation files and the environment-template comments inside `FairPay/`. Its `CANDIDATE_MANIFEST.json` entries are recalculated and `verify:candidate` must pass after applying the patch. No runtime logic, application versions, or test fixtures are changed.
 
 ## Operating boundaries
 
 Single user. Synthetic records. Local unencrypted persistence. No production-grade authentication, independent bank reconciliation, verified buyer identity, public deployment safety, or guaranteed provider transaction recovery. DRAFT is not PAID; ambiguous states must fail closed.
+
+## Reviewer troubleshooting
+
+| Symptom | First check |
+| --- | --- |
+| Empty projects after first launch | Expected. A fresh clone has no saved local data. Use Overview sample previews. |
+| AI Analyze cannot run | Start Ollama and confirm the `qwen3:4b-instruct` model is installed. |
+| PDF import fails outside macOS | Use text paste, TXT, MD, or DOCX with `unzip` installed. |
+| Historical $400 draft is not shown | Expected. Historical private project data and Sandbox ID are not included. |
+| `npm test` reports legacy failures | Do not hide them. Run `npm run qa:sprint-b` and inspect [Validation](VALIDATION.md). |
+| Manifest verification fails after editing `FairPay/` | Check which file changed. Do not regenerate historical expected results as a workaround. |

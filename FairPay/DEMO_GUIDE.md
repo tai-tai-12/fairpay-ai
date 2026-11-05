@@ -1,14 +1,29 @@
-# Synthetic demo — no PayPal writes
-1. Launch fresh copy; Projects starts empty. Open Add agreement and select existing sample or paste: “Synthetic review sample. Milestone 1: Deliver one poster for USD 200 after actual client acceptance. No prior payments are asserted by this sample.”
-2. Without Ollama, stop at source intake: this is NOT a complete offline extraction demo. With separately installed local model, analyze, inspect source quote and save with explicit evidence consent.
-3. Billing: record synthetic financial review (all known payments/credits), then separately record acceptance for this fictional example. These are human records, not verified payments/identity.
-4. Review exact net amount and recipient preview. STOP BEFORE CREATE. Do not enter credentials or invoke PayPal.
-5. Offline illustrative outcome: “Synthetic illustration only — DRAFT · Not sent; no provider ID, no API call, no payment.” This sentence is a storyboard, never insert it into project invoice records.
-For an executable isolated mock flow run `node --test tests/v1985-fault-boundaries.test.mjs`: concurrency, ambiguous write, recipient mismatch are tested against local stubs. Terminal test output is not real provider evidence.
+# FairPay AI · Safe reviewer demo
 
+**Audience:** reviewers with a fresh local installation. The samples are fictional. Never use real contracts, live PayPal credentials, or real funds.
 
-## Sprint B reviewer-first demonstration (read-only)
+## Track A · Explore without AI or PayPal
 
-From a brand-new clean install, open Overview → **Preview two safe billing decisions**. Example A shows fictional **USD 500 gross − USD 100 human-recorded deposit = USD 400 calculated outstanding**. Neither the credit nor acceptance is externally verified. Example B shows an **unsigned USD 600→700** fee change requiring verification. Use the two buttons to prefill the editable agreement; **prefill triggers no backend write and no AI analysis**. Review the real output only if Ollama is separately running. If the local model is absent, honestly show the setup notice and storyboard rather than claiming successful extraction. 
+1. Install Node.js 22+ and run `npm run setup` then `npm start` from `FairPay/`.
+2. Open `http://127.0.0.1:3000`. Starting with **zero saved projects** is expected.
+3. In **Overview**, expand **Preview two safe billing decisions**.
+4. **Clear-fee sample** illustrates a $500 fee, a $100 human-recorded *illustrative* credit, and a calculated $400 outstanding balance. The credit is not independently verified, and previewing it does not store a ledger entry.
+5. **Conflict sample** illustrates original $600 terms and an unsigned $700 change. The unsigned proposal is not automatically approved.
+6. Select **Try clear-fee sample** or **Try conflict sample** to fill editable synthetic agreement text. **Preview and prefill do not call AI, save a project, or contact PayPal.**
 
-On the Billing workspace, distinguish **source fee**, **human-recorded ledger gross/credits/net**, **local policy eligibility**, and **existing PayPal read-back status**. DRAFT ≠ SENT ≠ PAID. Do not click Create Draft during the recorded safe demonstration; do not claim that the local storyboard is a provider integration test. Existing historical PayPal Sandbox data requires separate ID/recipient/authorization verification before presentation as real E2E evidence. See `docs/sprint-b/FINAL_SCOPE_AND_DEMO.md` for manual Mac checks. No synthetic credits or acceptance records are created by previewing examples.
+## Track B · Optional actual local AI analysis
+
+1. Install and start Ollama; run `ollama pull qwen3:4b-instruct`.
+2. In **Agreements**, load the fictional sample and click **Analyze**.
+3. Compare the model's candidate amount and quoted source excerpt with the actual text. Do not treat a proposal as verified authority. Model outcomes can vary.
+4. Save only with explicit source review. If continuing to a synthetic billing review, create only fictional project, credit, and acceptance records. **Stop before Create Draft** in the recommended safe walkthrough.
+
+## PayPal example in the final video
+
+The submitted V31 video includes a **different, existing PayPal Sandbox project** with a $400 DRAFT read-back. It is not a continuation of the blocked-review sample. The $100 credit was entered by a person and is not bank-verified. The invoice was not sent or paid. **The private historical invoice ID, merchant credentials, and local ledger are intentionally excluded from this public checkout.**
+
+The product includes deliberately authorized Sandbox draft handling, but no provider API calls are required to follow these safe examples. For optional provider setup with **your own** test merchant, consult [Developer Guide](../docs/DEVELOPER_GUIDE.md); do not recreate the original invoice for demonstration.
+
+## What these steps do not establish
+
+Sample preview is not model extraction. Local synthetic records are not confirmed buyer acceptance or bank settlement. Automated provider mocks do not certify an end-to-end real payment. The public code is not production-ready. See [Validation and Limitations](../docs/VALIDATION.md).

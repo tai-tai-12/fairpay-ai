@@ -1,3 +1,5 @@
+> **Historical QA checkpoints.** This file preserves Sprint A and Sprint B engineering reports. The **current reader-facing interpretation** is in [Validation and Limitations](../docs/VALIDATION.md). The 155 passing checks below refer to a prior Sprint A scope; release documentation later reported 161 focused checks. Neither count means that the full historical suite passed. The final video contains a separately recorded Sandbox draft read-back, **not independently reproduced by the isolated QA environment**.
+
 # Sprint A QA status — NON-RELEASE
 
 Baseline dev8.6 focused146/146PASS. Sprint A adds9tests: A1six bounded mock equivalents, A2one deterministic workflow metric test, A4two health/report-label tests. Current source focused155/155PASS (109current+8scorer+27HTTP+11frozen). Final extracted-package evidence accompanies delivery.

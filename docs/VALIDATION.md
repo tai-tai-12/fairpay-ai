@@ -15,7 +15,7 @@ This page clarifies the scope of evidence from different engineering checkpoints
 | V31 product demo | Recorded app behavior and a separate existing Sandbox DRAFT read-back | Independent remote verification by the earlier isolated QA environment |
 | Static UI and isolated checks | Limited visual and structural checks | Complete native-browser, accessibility, or user-study verification |
 
-**The documentation update has not rerun automated tests or performed a new live PayPal read-back.** Reproduce the focused results using the source code below.
+**The documentation update itself does not rerun automated tests or perform a new live PayPal read-back.** The update script requires a local manifest check and attempts the focused suite before committing; its output on your machine is the relevant new evidence. Reproduce the focused results using the source code below.
 
 ## Three different demo scenarios
 
@@ -50,6 +50,15 @@ npm run scan:release
 ```
 
 The focused QA alias is defined in `package.json`. `verify:candidate` hashes released files against `CANDIDATE_MANIFEST.json`. The source scanner looks for obvious forbidden paths and secrets; it is not a forensic PII audit.
+
+## Understanding source and manifest versions
+
+- **Current build identity** remains `1.9.1-dev.8.6-sprint-b` in `FairPay/package.json` and `FairPay/VERSION.txt`.
+- **V31** identifies the submitted video edit, not an app version.
+- **`appVersion: 1.3.2`** is a legacy API compatibility field; `productVersion` identifies the current build.
+- **`SOURCE_SHA256_MANIFEST.json`** is a historical source inventory. It must not be silently rewritten to represent the updated public README.
+- **`CANDIDATE_MANIFEST.json`** is the current file-integrity inventory used by `verify:candidate`. The patch recomputes only entries for edited non-runtime documents and template comments.
+- Version numbers in old test filenames and Sprint records are retained because they identify real engineering checkpoints, not UI copy.
 
 ## Remaining limitations
 
