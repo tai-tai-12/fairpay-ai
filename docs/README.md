@@ -7,6 +7,7 @@ Start with the [FairPay AI overview](../README.md) or watch the [three-minute de
 | What you want to do | Where to go |
 | --- | --- |
 | Understand the product and its three screens | [Explore the workflow](USER_GUIDE.md) |
+| View actual screenshots of all three screens | [Product tour](PRODUCT_TOUR.md) |
 | Try the sample cases in a local browser | [Safe demo walkthrough](../FairPay/DEMO_GUIDE.md) |
 | Install the app, enable Ollama, or configure Sandbox | [Installation and configuration](DEVELOPER_GUIDE.md) |
 | Inspect the source code and components | [System architecture](../FairPay/ARCHITECTURE.md) |

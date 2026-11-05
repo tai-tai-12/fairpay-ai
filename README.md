@@ -4,15 +4,19 @@
 
 FairPay AI helps users review agreement terms, check billing amounts against the source, and work with PayPal Sandbox invoice drafts under explicit human approval. The AI proposes information. It does **not** authorize billing or verify payments.
 
+**Why the amount matters.** A source agreement can show a **USD 500 fee** while a prior credit, an unsigned price amendment, or missing acceptance changes what may be invoiced. FairPay separates AI suggestions, quoted source evidence, recorded credits, deterministic rules and explicit human authorization. **A source-matched amount is not automatically billable.**
+
 **[Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)** · **[Explore the workflow](docs/USER_GUIDE.md)** · **[Install and test](docs/DEVELOPER_GUIDE.md)** · **[Validation and limitations](docs/VALIDATION.md)**
 
 > **Hackathon prototype only.** Local single-user application, synthetic examples, PayPal Sandbox only. **Not production-ready.** Do not use real client data, funds, or live credentials.
 
 ## Product preview
 
-![FairPay AI Agreements interface showing source evidence review](assets/fairpay-v31-agreement-demo.jpg)
+![Actual FairPay AI Agreements screen with an AI-proposed USD 50 corrected against a quoted USD 500 source milestone](assets/fairpay-agreement-evidence-demo.png)
 
-*Agreements interface captured from the [product demo](https://www.youtube.com/watch?v=pivk3KyXpEQ). This is a recorded demonstration, not a hosted live app.*
+*Real local-app screenshot using a fictional agreement: the initial AI suggestion of **USD 50** did not match the quoted **USD 500** fee. The mismatch was corrected against the source. This image does **not** show a payment or invoice creation.*
+
+**[Explore all three screens — Overview, Agreements and Payments](docs/PRODUCT_TOUR.md)** · [Watch the V31 demonstration](https://www.youtube.com/watch?v=pivk3KyXpEQ)
 
 ## Product overview
 

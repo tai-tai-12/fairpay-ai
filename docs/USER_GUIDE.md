@@ -4,6 +4,8 @@ FairPay AI helps users review agreements and understand why an amount may or may
 
 [Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ) · [Project overview](../README.md) · [Installation and testing](DEVELOPER_GUIDE.md)
 
+For annotated screenshots of the actual three-page interface, visit the [Product tour](PRODUCT_TOUR.md).
+
 ## Find your way around the app
 
 The application has **three main navigation pages**. Use the same names in the left sidebar.

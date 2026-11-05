@@ -9,6 +9,7 @@ FairPay AI 是一套以合約證據為基礎的帳務審核原型。它結合 AI
 | 目的 | 相關說明 |
 | --- | --- |
 | 了解產品及三個主要畫面 | [產品操作流程](../USER_GUIDE.md) |
+| 查看三個頁面的實際操作截圖 | [產品畫面導覽](../PRODUCT_TOUR.md) |
 | 在本機試用兩組合成範例 | [安全示範步驟](../../FairPay/DEMO_GUIDE.md) |
 | 安裝程式、啟用 AI 或設定 PayPal Sandbox | [安裝與設定](../DEVELOPER_GUIDE.md) |
 | 了解程式模組及資料流程 | [系統架構](../../FairPay/ARCHITECTURE.md) |
