@@ -31,6 +31,14 @@ A prior isolated QA run recorded its live remote check as **INCOMPLETE / NOT RUN
 
 Status **DRAFT** is not SENT or PAID. A malformed value or uncertain provider response should remain UNKNOWN, not be treated as proof of payment. No bank settlement was independently verified.
 
+## Public evidence and reproducibility
+
+The public repository contains source files, synthetic fixtures, focused test commands, and frozen adversarial inputs. It **does not include all historical, private engineering evidence bundles**. Some retained Sprint reports reference a separate `Evidence ZIP`, `codex-work/`, or `audit-work/` that was produced in an isolated development environment. Those referenced files are **not available in this public repository** and must not be presented as independently reproducible from this checkout.
+
+For an inspectable starting point, run the focused test suite against the public source. The result you observe on your own system is stronger evidence than relying on a historical count. Do not regenerate expected outputs or alter historical gold files just to obtain a green run.
+
+**Provider proof boundary:** The video records a read-back of a separate pre-existing Sandbox invoice; that footage is not a substitute for independent third-party verification. The earlier isolated QA did not complete remote linkage verification. Credits are user-recorded, not bank-confirmed.
+
 ## Reproduce focused checks
 
 With Node.js 22+ and Python 3, from the `FairPay` directory:

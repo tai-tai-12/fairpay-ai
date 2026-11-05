@@ -1,5 +1,7 @@
 # Documentation
 
+Watch the **[final three-minute product demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)** first, then choose the guide for your role.
+
 Choose the starting point for your role.
 
 | Audience | Main guide | What it covers |
@@ -18,6 +20,6 @@ Choose the starting point for your role.
 - [QA History](../FairPay/QA_STATUS.md)
 - [Sprint B Engineering Scope](../FairPay/docs/sprint-b/FINAL_SCOPE_AND_DEMO.md)
 - [Archived submission drafts](archive/README.md)
-- [中文安裝說明](zh/GET_STARTED_ZH.md)
+- [繁體中文使用指引](zh/GET_STARTED_ZH.md)
 
 Existing documents under `FairPay/` are integrity-checked release artifacts and preserve historical checkpoints. The [Validation & Limitations](VALIDATION.md) page explains differences between earlier QA results and the final demo.

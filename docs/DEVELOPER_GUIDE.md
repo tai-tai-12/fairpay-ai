@@ -27,6 +27,27 @@ npm start
 
 Open **http://127.0.0.1:3000**. `npm run setup` copies `.env.example` to a local `.env` only when `.env` does not already exist. Keep this file untracked. The new installation starts with no projects or historical invoice IDs. Stop the server with Ctrl+C.
 
+## First-run verification
+
+After `npm start`, open **http://127.0.0.1:3000**. The navigation shows **Overview**, **Agreements**, and **Payments**.
+
+1. On **Overview**, select **Preview two safe billing decisions**. The sample cards appear without creating a project.
+2. Click **Try clear-fee sample**. It fills editable fictional agreement text. This is not a model result or a saved credit.
+3. With Ollama running, go to **Agreements** and click **Analyze** to see candidate terms and source passages. Check them before saving.
+4. Use **Payments** to inspect review requirements only after you deliberately create a synthetic project. Do not use real customers or money.
+
+A fresh clone contains **no private project data**, no historical authorization, and no access to the $400 Sandbox draft shown in the V31 video.
+
+## Document import portability
+
+- **Paste text, TXT, and MD** are the most portable inputs.
+- **DOCX** text extraction uses the system `unzip` command and works only when that utility is installed.
+- **Selectable-text PDF import currently requires macOS**, because the implementation uses macOS PDFKit through `osascript`.
+- Scanned image PDFs are **not** supported; there is no OCR. Paste relevant text instead.
+- The import limit is **2 MB per file** and up to **12,000 extracted characters**. Use fictional agreement content.
+
+These are current implementation constraints from `FairPay/document-import.mjs`, not planned features.
+
 ## Enable local AI
 
 1. Install and run [Ollama](https://ollama.com/download).
@@ -64,6 +85,14 @@ Do **not** use live credentials or publish `.env`. The public package does not c
 | `FairPay/tools/` | Setup, source scan, and integrity checks |
 
 See [Architecture](../FairPay/ARCHITECTURE.md) and [Security & Privacy](../FairPay/SECURITY_AND_PRIVACY.md).
+
+## Version identifiers and historic scripts
+
+- Application build is `1.9.1-dev.8.6-sprint-b` in `package.json` and `VERSION.txt`.
+- The public demo video's **V31** label is a video editing version, not the application build.
+- `appVersion: 1.3.2` in `/api/health` is a legacy compatibility field. Use `productVersion` for the candidate identifier.
+- A `v0.4` comment in `.env.example` and historical `qa:dev*` scripts were retained intentionally. Do not replace version identifiers in test fixtures or manifests merely to make their labels look new.
+- Use **`npm run qa:sprint-b`** for the documented focused check. Running **`npm test`** triggers the historical suite, which includes documented failing cases.
 
 ## Run focused checks
 

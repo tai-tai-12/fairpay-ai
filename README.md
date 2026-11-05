@@ -8,6 +8,12 @@ FairPay AI helps users review agreement terms, check billing amounts against the
 
 > **Hackathon prototype only.** Local single-user application, synthetic examples, PayPal Sandbox only. **Not production-ready.** Do not use real client data, funds, or live credentials.
 
+## Product preview
+
+![FairPay AI agreement evidence review, captured from the final V31 product demo](assets/fairpay-v31-agreement-demo.jpg)
+
+*Agreement evidence review shown in the [V31 demo video](https://www.youtube.com/watch?v=pivk3KyXpEQ). This is a recorded demonstration frame, not a hosted live app.*
+
 ## Product overview
 
 1. **AI-assisted agreement analysis.** Local Ollama with `qwen3:4b-instruct` proposes milestones, fees, deliverables, and source excerpts. Users check the source before accepting suggestions.
@@ -28,6 +34,17 @@ These are **separate demonstration scenarios**, not a single completed or bank-v
 | Follow a safe synthetic walkthrough | [Demo Guide](FairPay/DEMO_GUIDE.md) |
 | Evaluate test evidence and known limitations | [Validation & Limitations](docs/VALIDATION.md) |
 | Find more technical and historical documents | [Documentation Index](docs/README.md) |
+
+## Version and release scope
+
+| Identifier | Value | Meaning |
+| --- | --- | --- |
+| Application build | `1.9.1-dev.8.6-sprint-b` | The current source candidate in `FairPay/package.json` and `FairPay/VERSION.txt` |
+| Demo video | V31 · 2:58.67 | The separately edited YouTube presentation, not the application version |
+| `appVersion: 1.3.2` | Legacy API compatibility field | Not the current product release number |
+| Release status | Local hackathon prototype | Not deployed for real payments |
+
+Some engineering files contain older version names because they preserve earlier test history. Use this root README and the [Developer Guide](docs/DEVELOPER_GUIDE.md) for current setup instructions.
 
 ## Quick start
 
@@ -69,6 +86,16 @@ PayPal Sandbox invoice DRAFT and read-back
 - `FairPay/agreement-evidence.mjs`, `financial-policy.mjs`, and `receivables.mjs` handle the evidence and financial model.
 - `FairPay/paypal-adapter.mjs` handles provider integration.
 - `FairPay/tests/`, `evaluation/`, `audit/`, and `tools/` contain regression checks, synthetic evaluation cases, audit checks, and setup utilities.
+
+## What a fresh install can reproduce
+
+| Setup | Expected result |
+| --- | --- |
+| Node.js only | Browser UI, empty project list, and read-only synthetic sample previews |
+| Node.js + running Ollama model | Real AI candidate extraction for sample agreement text, followed by source review |
+| Plus your own PayPal Sandbox credentials | Optional authorized Sandbox testing with *new synthetic data*; not the private historical invoice |
+
+For a step-by-step first-time walkthrough, use the [User Guide](docs/USER_GUIDE.md). This repository cannot recreate the video's existing $400 draft because its private invoice reference and local records are intentionally excluded.
 
 ## Evidence and limitations
 

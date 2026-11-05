@@ -6,15 +6,17 @@ FairPay AI helps users review agreements and understand why an amount may or may
 
 [Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ) · [Project overview](../README.md)
 
-## What each workspace does
+## Find your way around the app
 
-| Workspace | Purpose |
+The application has **three main navigation pages**. Use the same names in the left sidebar.
+
+| App navigation | What you can do |
 | --- | --- |
-| Overview | Explore a project and preview safe fictional billing situations |
-| Agreement | Examine agreement text, candidate AI terms, and source evidence |
-| Billing | Keep contract gross, human-recorded credits, and net balance separate |
-| Review controls | Show why evidence or approval requirements can block invoice drafting |
-| PayPal Sandbox | Work with deliberately authorized drafts and read back provider status when configured |
+| **Overview** | Explore saved projects and preview two fictional billing decisions |
+| **Agreements** | Load agreement text, run optional local AI analysis, and review source evidence |
+| **Payments** | Review recorded credits, calculated balances, approvals, and PayPal Sandbox invoice states |
+
+**Review gates** and **PayPal Sandbox read-back** are capabilities within the workflow, not separate navigation pages. A new installation starts with an empty project list.
 
 ## Try the fictional examples
 
@@ -22,9 +24,19 @@ FairPay AI helps users review agreements and understand why an amount may or may
 2. Open **Overview → Preview two safe billing decisions**.
 3. The clear-fee example illustrates a **$500 agreement**. A separate **$100 human-recorded credit** would make a calculated **$400 balance**. The preview itself does **not** create a credit or verify a deposit.
 4. The conflict example contains an original **$600** term and an unsigned **$700** proposal. The unsigned change should not silently become billable.
-5. In **Agreement**, you may inspect source text. Actual AI extraction requires a running local Ollama model, followed by explicit source review.
+5. In **Agreements**, you may inspect source text. Actual AI extraction requires a running local Ollama model, followed by explicit source review.
 
 These preview actions do **not** call PayPal, analyze with AI, create a project, record a payment, or authorize an invoice. For a step-by-step workflow, use the [Demo Guide](../FairPay/DEMO_GUIDE.md).
+
+## What to expect on a fresh install
+
+| What you have installed | What you will see |
+| --- | --- |
+| Node.js only | Real running interface and prefilled synthetic text; no AI request or PayPal activity from preview buttons |
+| Node.js and Ollama with the correct model running | You can click **Analyze** in Agreements and review actual proposed terms and excerpts |
+| Optional own Sandbox credentials | An environment for deliberate testing with your own synthetic project, not the video's existing draft |
+
+The video presents three separate demonstrations. You should **not** expect a fresh installation to contain the historical $400 invoice or the recorded synthetic financial ledger.
 
 ## What the financial statuses mean
 
