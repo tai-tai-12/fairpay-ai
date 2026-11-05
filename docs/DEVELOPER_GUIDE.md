@@ -1,8 +1,6 @@
-# Developer Guide
+# Installation and Testing
 
-**For developers and technical reviewers.**
-
-[Project overview](../README.md) · [User Guide](USER_GUIDE.md) · [Validation & Limitations](VALIDATION.md)
+[Project overview](../README.md) · [Explore the workflow](USER_GUIDE.md) · [Validation and limitations](VALIDATION.md)
 
 ## Requirements
 
@@ -52,7 +50,7 @@ These are current implementation constraints from `FairPay/document-import.mjs`,
 
 1. Install and run [Ollama](https://ollama.com/download).
 2. Run `ollama pull qwen3:4b-instruct`.
-3. Open the Agreement page, load synthetic source text, click Analyze, and review the model's candidate terms against the source.
+3. Open **Agreements**, load synthetic source text, click **Analyze**, and review the model's candidate terms against the source.
 
 The default `.env.example` selects Ollama. Without a running model, a preview is not real extraction. Model outputs can vary.
 
@@ -91,7 +89,7 @@ See [Architecture](../FairPay/ARCHITECTURE.md) and [Security & Privacy](../FairP
 - Application build is `1.9.1-dev.8.6-sprint-b` in `package.json` and `VERSION.txt`.
 - The public demo video's **V31** label is a video editing version, not the application build.
 - `appVersion: 1.3.2` in `/api/health` is a legacy compatibility field. Use `productVersion` for the candidate identifier.
-- The outdated `v0.4` header in `.env.example` has been removed. Historical `qa:dev*` scripts and versioned test names remain for provenance. Do not change package build identifiers, the legacy `/api/health` compatibility field, frozen test names, or the historical `SOURCE_SHA256_MANIFEST.json` merely to make labels look new.
+- Historical `qa:dev*` scripts and versioned test names identify earlier engineering checkpoints. Keep those identifiers and the historical `SOURCE_SHA256_MANIFEST.json` unchanged unless their underlying contracts are deliberately revised.
 - Use **`npm run qa:sprint-b`** for the documented focused check. Running **`npm test`** triggers the historical suite, which includes documented failing cases.
 
 ## Run focused checks
@@ -104,15 +102,15 @@ npm run verify:candidate
 npm run scan:release
 ```
 
-The earlier release reported **161 passing focused checks**, but this is **not** an all-green full historical suite. Some legacy tests still have documented failures. Provider fault tests use synthetic mocks. This documentation-only change has **not rerun** the checks. See [Validation & Limitations](VALIDATION.md).
+The focused suite consists of **161 checks** in the documented passing local run. The broader historical suite contains known failures, and provider fault tests use synthetic mocks. Re-run the commands above to verify the current checkout. See [Validation and limitations](VALIDATION.md).
 
-**Integrity note.** `FairPay/CANDIDATE_MANIFEST.json` stores hashes for released candidate files. Do not edit or move files inside `FairPay/` without intentionally revalidating the package. This patch updates only selected documentation files and the environment-template comments inside `FairPay/`. Its `CANDIDATE_MANIFEST.json` entries are recalculated and `verify:candidate` must pass after applying the patch. No runtime logic, application versions, or test fixtures are changed.
+**Integrity note.** `FairPay/CANDIDATE_MANIFEST.json` stores hashes for released candidate files. Editing or moving a file inside `FairPay/` requires updating the candidate inventory and rerunning `verify:candidate`. The historical source manifest and frozen evaluation fixtures are separate records and should not be rewritten to disguise changed results.
 
 ## Operating boundaries
 
 Single user. Synthetic records. Local unencrypted persistence. No production-grade authentication, independent bank reconciliation, verified buyer identity, public deployment safety, or guaranteed provider transaction recovery. DRAFT is not PAID; ambiguous states must fail closed.
 
-## Reviewer troubleshooting
+## Troubleshooting
 
 | Symptom | First check |
 | --- | --- |

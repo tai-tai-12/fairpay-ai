@@ -1,10 +1,8 @@
-# User Guide
-
-**For freelancers, hackathon judges, and first-time reviewers.**
+# Explore FairPay AI
 
 FairPay AI helps users review agreements and understand why an amount may or may not be ready for invoicing. It is a **local prototype**, not a live payment service.
 
-[Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ) · [Project overview](../README.md)
+[Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ) · [Project overview](../README.md) · [Installation and testing](DEVELOPER_GUIDE.md)
 
 ## Find your way around the app
 
@@ -38,7 +36,7 @@ These preview actions do **not** call PayPal, analyze with AI, create a project,
 
 The video presents three separate demonstrations. You should **not** expect a fresh installation to contain the historical $400 invoice or the recorded synthetic financial ledger.
 
-## One-minute reviewer walkthrough
+## Quick walkthrough
 
 1. Start the local server with Node.js 22+ and open `http://127.0.0.1:3000`.
 2. On **Overview**, open **Preview two safe billing decisions**. The clear-fee example shows $500 gross, $100 illustrative credit, and $400 calculated net. It does not record a payment.
@@ -57,7 +55,7 @@ The video presents three separate demonstrations. You should **not** expect a fr
 - **DRAFT** means an invoice has not been sent.
 - **UNKNOWN** means the provider state is uncertain and must not be assumed paid.
 
-## What the submitted video proves and does not prove
+## What the demo shows and what it does not verify
 
 The video shows a **$50 vs. $500** correction, a **separate blocked-review** example, and a **different sample project** with an existing **$400 PayPal Sandbox DRAFT**. That draft is **not sent or paid**. The $100 credit is human-recorded, not independently verified.
 
@@ -67,4 +65,4 @@ A new clone does **not** contain the private historical Sandbox invoice or merch
 
 Use synthetic data only. Do not enter real client agreements or personal financial information. Do not expose the local server to the internet.
 
-Developers should continue with the [Developer Guide](DEVELOPER_GUIDE.md). Reviewers can inspect [Validation & Limitations](VALIDATION.md).
+To install or test the source, see [Installation and testing](DEVELOPER_GUIDE.md). To examine test coverage and evidence boundaries, see [Validation and limitations](VALIDATION.md).

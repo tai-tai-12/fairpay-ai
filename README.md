@@ -4,7 +4,7 @@
 
 FairPay AI helps users review agreement terms, check billing amounts against the source, and work with PayPal Sandbox invoice drafts under explicit human approval. The AI proposes information. It does **not** authorize billing or verify payments.
 
-**[Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)** · **[User Guide](docs/USER_GUIDE.md)** · **[Developer Guide](docs/DEVELOPER_GUIDE.md)** · **[Validation & Limitations](docs/VALIDATION.md)**
+**[Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)** · **[Explore the workflow](docs/USER_GUIDE.md)** · **[Install and test](docs/DEVELOPER_GUIDE.md)** · **[Validation and limitations](docs/VALIDATION.md)**
 
 > **Hackathon prototype only.** Local single-user application, synthetic examples, PayPal Sandbox only. **Not production-ready.** Do not use real client data, funds, or live credentials.
 
@@ -12,7 +12,7 @@ FairPay AI helps users review agreement terms, check billing amounts against the
 
 ![FairPay AI Agreements interface showing source evidence review](assets/fairpay-v31-agreement-demo.jpg)
 
-*Agreement evidence review shown in the [V31 demo video](https://www.youtube.com/watch?v=pivk3KyXpEQ). This is a crop of the actual recorded product interface, with the video presentation bars removed. It is not a hosted live app.*
+*Agreements interface captured from the [product demo](https://www.youtube.com/watch?v=pivk3KyXpEQ). This is a recorded demonstration, not a hosted live app.*
 
 ## Product overview
 
@@ -29,8 +29,8 @@ These are **separate demonstration scenarios**, not a single completed or bank-v
 | Goal | Read |
 | --- | --- |
 | See the finished product demonstration | [Final demo video](https://www.youtube.com/watch?v=pivk3KyXpEQ) |
-| Understand the UI and explore fictional examples | [User Guide](docs/USER_GUIDE.md) |
-| Install, configure AI, and inspect code | [Developer Guide](docs/DEVELOPER_GUIDE.md) |
+| Explore the screens and fictional examples | [Product workflow](docs/USER_GUIDE.md) |
+| Install the app, enable AI, or inspect source code | [Installation and testing](docs/DEVELOPER_GUIDE.md) |
 | Follow a safe synthetic walkthrough | [Demo Guide](FairPay/DEMO_GUIDE.md) |
 | Evaluate test evidence and known limitations | [Validation & Limitations](docs/VALIDATION.md) |
 | Find more technical and historical documents | [Documentation Index](docs/README.md) |
@@ -44,7 +44,7 @@ These are **separate demonstration scenarios**, not a single completed or bank-v
 | `appVersion: 1.3.2` | Legacy API compatibility field | Not the current product release number |
 | Release status | Local hackathon prototype | Not deployed for real payments |
 
-Older version numbers in test filenames, historical manifests, and the legacy API field are retained for compatibility and audit history. The obsolete `v0.4` environment-template comment and stale handoff instructions were corrected in this documentation cleanup. Use this README and the [Developer Guide](docs/DEVELOPER_GUIDE.md) for current setup instructions.
+Versioned test filenames and historical manifests identify prior engineering checkpoints. The `appVersion` API field is retained for compatibility; use `productVersion` for the current application identifier. See [Installation and testing](docs/DEVELOPER_GUIDE.md) for current commands.
 
 ## Quick start
 
@@ -95,11 +95,11 @@ PayPal Sandbox invoice DRAFT and read-back
 | Node.js + running Ollama model | Real AI candidate extraction for sample agreement text, followed by source review |
 | Plus your own PayPal Sandbox credentials | Optional authorized Sandbox testing with *new synthetic data*; not the private historical invoice |
 
-For a step-by-step first-time walkthrough, use the [User Guide](docs/USER_GUIDE.md). This repository cannot recreate the video's existing $400 draft because its private invoice reference and local records are intentionally excluded.
+For a step-by-step walkthrough, use the [product workflow](docs/USER_GUIDE.md). This repository cannot recreate the video's existing $400 draft because its private invoice reference and local records are intentionally excluded.
 
 ## Evidence and limitations
 
-The release documentation reports **161 passing checks in the focused QA suite**. That is **not** a claim that all historical tests pass. Historical failures, incomplete browser checks, and provider-evidence boundaries remain documented. This repository documentation update **does not itself establish a new test run**. Run the commands in [Validation & Limitations](docs/VALIDATION.md) to reproduce the focused checks.
+The focused QA suite completed **161 passing checks** in the documented local run, including current regressions, scoring checks, isolated HTTP checks, and frozen adversarial checks. This does **not** mean the broader historical suite is fully passing or that the application is production-ready. Reproduce the checks and review their limits in [Validation and limitations](docs/VALIDATION.md).
 
 The video depicts a separate existing Sandbox DRAFT read-back. Earlier isolated engineering QA **did not independently access the private Sandbox invoice**, so its remote verification result remains recorded as **incomplete**. The synthetic credit is not a bank-confirmed deposit. See [Validation & Limitations](docs/VALIDATION.md) and [Security & Privacy](FairPay/SECURITY_AND_PRIVACY.md).
 

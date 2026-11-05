@@ -1,8 +1,8 @@
-# FairPay AI · Safe reviewer demo
+# FairPay AI · Safe local demo
 
-**Audience:** reviewers with a fresh local installation. The samples are fictional. Never use real contracts, live PayPal credentials, or real funds.
+Follow these steps to explore fictional billing scenarios in a fresh local installation. Do not use real contracts, live PayPal credentials, or real funds.
 
-## Track A · Explore without AI or PayPal
+## Explore sample cases without AI or PayPal
 
 1. Install Node.js 22+ and run `npm run setup` then `npm start` from `FairPay/`.
 2. Open `http://127.0.0.1:3000`. Starting with **zero saved projects** is expected.
@@ -11,7 +11,7 @@
 5. **Conflict sample** illustrates original $600 terms and an unsigned $700 change. The unsigned proposal is not automatically approved.
 6. Select **Try clear-fee sample** or **Try conflict sample** to fill editable synthetic agreement text. **Preview and prefill do not call AI, save a project, or contact PayPal.**
 
-## Track B · Optional actual local AI analysis
+## Run optional local AI analysis
 
 1. Install and start Ollama; run `ollama pull qwen3:4b-instruct`.
 2. In **Agreements**, load the fictional sample and click **Analyze**.

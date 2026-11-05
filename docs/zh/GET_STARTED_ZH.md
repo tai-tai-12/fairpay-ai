@@ -1,27 +1,32 @@
-# FairPay AI｜繁體中文入門指南
+# FairPay AI｜繁體中文指南
 
-這是目前公開 GitHub 的使用與檔案導覽，不是舊版 ZIP 上傳教學。
+FairPay AI 是一套以合約證據為基礎的帳務審核原型。它結合 AI 輔助條款分析、人工審核、應收款計算及 PayPal Sandbox 發票草稿管理。
 
-**正式入口：** [GitHub README](../../README.md) · [3 分鐘 V31 Demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)
+[專案首頁](../../README.md) · [3 分鐘產品示範](https://www.youtube.com/watch?v=pivk3KyXpEQ)
 
-## 先看什麼？
+## 想做什麼？
 
-1. **產品評審／新使用者**：先看影片，再看 [User Guide](../USER_GUIDE.md)。
-2. **開發者／技術評審**：看 [Developer Guide](../DEVELOPER_GUIDE.md)，按照指令啟動。技術模組可查 [Architecture](../../FairPay/ARCHITECTURE.md)。
-3. **驗證與限制**：看 [Validation & Limitations](../VALIDATION.md)，區分目前 focused checks、歷史 QA、Sandbox 影片證據與未驗證項目。
-4. **舊草稿與紀錄**：統一放在 [Archive](../archive/README.md)，不再作為最新提交版本。
-
-## 三個主要介面
-
-| 介面 | 功能 |
+| 目的 | 相關說明 |
 | --- | --- |
-| **Overview** | 查看專案及預覽兩組虛構帳務情境 |
-| **Agreements** | 檢查來源條款，選用本機 AI 產生候選內容 |
-| **Payments** | 檢查帳款、審核狀態和 PayPal Sandbox 草稿 |
+| 了解產品及三個主要畫面 | [產品操作流程](../USER_GUIDE.md) |
+| 在本機試用兩組合成範例 | [安全示範步驟](../../FairPay/DEMO_GUIDE.md) |
+| 安裝程式、啟用 AI 或設定 PayPal Sandbox | [安裝與設定](../DEVELOPER_GUIDE.md) |
+| 了解程式模組及資料流程 | [系統架構](../../FairPay/ARCHITECTURE.md) |
+| 檢查測試結果、驗證範圍與限制 | [驗證與限制](../VALIDATION.md) |
+| 了解資料保存及財務安全機制 | [安全與隱私](../../FairPay/SECURITY_AND_PRIVACY.md) |
+| 查閱先前的文件與工程紀錄 | [歷史文件](../archive/README.md) |
 
-## Mac 本機啟動
+## 產品介面
 
-先安裝 Node.js **22 或更新版本**。在 Terminal 執行：
+| 畫面 | 主要用途 |
+| --- | --- |
+| **Overview** | 查看專案，並預覽兩組合成帳務情境 |
+| **Agreements** | 載入合約條款、使用選用的本機 AI 分析、核對來源證據 |
+| **Payments** | 檢查人工紀錄的 credit、應收餘額、審核條件及 PayPal Sandbox 發票狀態 |
+
+## 本機快速啟動
+
+先安裝 **Node.js 22 或更新版本**。在 Terminal 執行：
 
 ```bash
 git clone https://github.com/tai-tai-12/fairpay-ai.git
@@ -30,15 +35,21 @@ npm run setup
 npm start
 ```
 
-用瀏覽器打開 `http://127.0.0.1:3000`。全新安裝**沒有已儲存專案**，可先在 Overview 開啟範例預覽。預覽不會自動執行 AI、建立 credit 或呼叫 PayPal。
+使用瀏覽器打開 `http://127.0.0.1:3000`。全新安裝沒有已儲存專案。可先到 **Overview → Preview two safe billing decisions**，查看不需要 AI 或 PayPal 帳號的範例。
 
-要真的執行 AI 分析，另外安裝並啟動 Ollama，再執行 `ollama pull qwen3:4b-instruct`。要測試 PayPal 則需自己的 Sandbox credentials，**不要使用 Live credentials**。
+範例預覽只會填入虛構文字，不會自動分析、儲存專案、記錄付款或建立發票。
 
-## 安全與版本
+## 選用功能
 
-- 應用程式版本：`1.9.1-dev.8.6-sprint-b`。影片的 V31 是獨立的剪輯版本。
-- 本專案只供**本機單人與合成資料**測試，不能用真實合約、真實資金或正式收款。
-- 影片中的 $400 Sandbox DRAFT 屬於另一個既有範例。公開原始碼不包含它的私有 ID、帳務資料或登入憑證。
-- 若要重現功能，請以 [Developer Guide](../DEVELOPER_GUIDE.md) 為主。不要依照 Archive 的舊草稿或已過時的內部 QA 指令操作。
+- **實際 AI 分析**：另行安裝並啟動 [Ollama](https://ollama.com/download)，執行 `ollama pull qwen3:4b-instruct`，再於 **Agreements** 按 **Analyze**。模型輸出仍須核對原始條款。
+- **PayPal Sandbox 測試**：使用自己的 Sandbox 開發者帳號與測試憑證。不要使用 Live credentials，也不要用真實客戶或付款資料。
+- **文件匯入**：TXT 與 MD 較通用。DOCX 需要系統 `unzip`；文字型 PDF 目前需要 macOS PDFKit，不支援掃描型 PDF 的 OCR。
 
-**歷史工程交接紀錄：** [原版 README_START_HERE](../archive/FairPay_README_START_HERE_HISTORICAL.md)。目前請以最新版 Developer Guide 為準。
+## 金額與狀態的判讀
+
+- 合約金額、人工紀錄的 credit，以及應收餘額必須分開看待。
+- AI 建議不是開票授權；人工紀錄的 credit 不是銀行驗證的付款。
+- 影片中現有的 **$400 PayPal Sandbox DRAFT** 屬於另一個合成範例，未寄出也未付款。全新下載的程式不包含該筆私人 Sandbox 發票及歷史專案資料。
+- 本專案僅供本機使用與合成資料展示，不具備正式環境的身分驗證、銀行對帳或安全部署機制。
+
+若要執行自動化檢查，請依照 [安裝與設定](../DEVELOPER_GUIDE.md) 和 [驗證與限制](../VALIDATION.md) 的指令。應用程式的版本識別與影片剪輯版本是不同概念，詳見 [專案首頁](../../README.md#version-and-release-scope)。

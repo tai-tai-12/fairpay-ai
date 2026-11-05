@@ -1,6 +1,6 @@
 # FairPay AI · Local build guide
 
-This is the runnable **local Sandbox prototype**, not a production payment app. For a quick introduction, begin with the [root README](../README.md), then choose the [User Guide](../docs/USER_GUIDE.md) or [Developer Guide](../docs/DEVELOPER_GUIDE.md).
+This is the runnable **local Sandbox prototype**, not a production payment app. For product context, see the [project overview](../README.md). For guided sample exploration, see the [workflow](../docs/USER_GUIDE.md); for detailed setup and tests, see [installation and testing](../docs/DEVELOPER_GUIDE.md).
 
 ## First run
 
@@ -32,4 +32,4 @@ These commands check a **focused** regression suite, file hashes, and obvious ac
 
 **Build identifiers:** the current internal application identifier is `1.9.1-dev.8.6-sprint-b`, while the submitted video is V31. The API `appVersion` field is a separate legacy compatibility marker; do not rewrite it for presentation purposes.
 
-The former multi-Sprint Chinese handoff text is archived under [Historical documents](../docs/archive/README.md) and is not the current run instruction.
+Additional release and test records are available in the [documentation archive](../docs/archive/README.md).
