@@ -1,0 +1,56 @@
+# Validation and Limitations
+
+This page clarifies the scope of evidence from different engineering checkpoints. It does not modify or replace the original QA records.
+
+[Project overview](../README.md) · [Developer Guide](DEVELOPER_GUIDE.md)
+
+## Evidence summary
+
+| Evidence | What it supports | What it does not establish |
+| --- | --- | --- |
+| **161 focused checks** reported in release README | Focused candidate regression and fault testing at the release checkpoint | All historical tests passing or production compliance |
+| **155 focused checks** in earlier Sprint A record | Earlier QA checkpoint | A contradictory final count; it predates the later release claim |
+| **197 passing, 31 failing, 1 timeout** in historical suite | Transparent legacy test history | A fully green historical suite |
+| Synthetic PayPal mocks | Provider error handling and guarded local logic | Real banking transactions, actual provider payment, or live end-to-end certification |
+| V31 product demo | Recorded app behavior and a separate existing Sandbox DRAFT read-back | Independent remote verification by the earlier isolated QA environment |
+| Static UI and isolated checks | Limited visual and structural checks | Complete native-browser, accessibility, or user-study verification |
+
+**The documentation update has not rerun automated tests or performed a new live PayPal read-back.** Reproduce the focused results using the source code below.
+
+## Three different demo scenarios
+
+1. **Agreement discrepancy.** AI proposes **$50**; source says **$500**. A person reviews and corrects it.
+2. **Blocked decision.** Another example requires additional review and does not proceed to invoice drafting.
+3. **Separate Sandbox project.** An existing **$400 DRAFT** is shown in read-back, using an illustrative **$500 gross − $100 manually recorded credit**. The credit is not bank-verified; the invoice was not sent or paid.
+
+These are **not one end-to-end paid transaction**.
+
+## Provider verification boundary
+
+A prior isolated QA run recorded its live remote check as **INCOMPLETE / NOT RUN**. That environment did not have access to the user's private merchant records or Sandbox invoice. The final video separately presents an existing Sandbox draft in the user's recorded local workflow. Do not convert the earlier unfinished QA into a completed independent validation claim.
+
+Status **DRAFT** is not SENT or PAID. A malformed value or uncertain provider response should remain UNKNOWN, not be treated as proof of payment. No bank settlement was independently verified.
+
+## Reproduce focused checks
+
+With Node.js 22+ and Python 3, from the `FairPay` directory:
+
+```bash
+npm run qa:sprint-b
+npm run verify:candidate
+npm run scan:release
+```
+
+The focused QA alias is defined in `package.json`. `verify:candidate` hashes released files against `CANDIDATE_MANIFEST.json`. The source scanner looks for obvious forbidden paths and secrets; it is not a forensic PII audit.
+
+## Remaining limitations
+
+- Local, single-user, non-production prototype.
+- No production authentication, verified buyer identity, or independent bank settlement.
+- No secure public hosting or production-grade transactional guarantees.
+- Local stored data is not encrypted using production key management.
+- Real extraction requires separately installed Ollama and model. Outputs may vary.
+- Native accessibility, user studies, and broad model accuracy claims remain unverified.
+- No real customer, revenue, or payment-collection claims.
+
+Original records remain available in [QA Status](../FairPay/QA_STATUS.md), [Known Limitations](../FairPay/KNOWN_LIMITATIONS.md), [Sprint A Remote Check](../FairPay/docs/sprint-a/A3_EXISTING_DRAFT_READ_ONLY.md), and [Sprint B Scope](../FairPay/docs/sprint-b/FINAL_SCOPE_AND_DEMO.md).

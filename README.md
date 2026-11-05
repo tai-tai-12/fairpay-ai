@@ -1,91 +1,83 @@
 # FairPay AI
 
-**Evidence-led agreement-to-invoice workflow for freelancers and small service teams.**
+**Evidence-led billing for freelancers and small service teams.**
 
-FairPay AI turns messy agreement language into **reviewable milestone evidence**, separates contract fees from human-recorded payments/credits, and conservatively manages a **PayPal Sandbox invoice draft**. The AI extracts *candidate* terms; deterministic policy and explicit human review decide whether an invoice draft may be authorized. An invoice draft is **not** an invoice sent or a payment received.
+FairPay AI helps users review agreement terms, check billing amounts against the source, and work with PayPal Sandbox invoice drafts under explicit human approval. The AI proposes information. It does **not** authorize billing or verify payments.
 
-> **Hackathon prototype only — Sandbox / local single-user mode. Not production-ready.** Do not use for real funds, private client agreements, or unattended financial actions.
+**[Watch the 3-minute demo](https://www.youtube.com/watch?v=pivk3KyXpEQ)** · **[User Guide](docs/USER_GUIDE.md)** · **[Developer Guide](docs/DEVELOPER_GUIDE.md)** · **[Validation & Limitations](docs/VALIDATION.md)**
 
-## What it demonstrates
+> **Hackathon prototype only.** Local single-user application, synthetic examples, PayPal Sandbox only. **Not production-ready.** Do not use real client data, funds, or live credentials.
 
-1. **Evidence-led extraction:** local Ollama (`qwen3:4b-instruct`) proposes milestones, deliverables, fees, and relevant agreement excerpts; humans review evidence and save explicitly.
-2. **Financial reconciliation:** the ledger keeps contract gross, manually entered credits, and net outstanding separate. **USD 500 gross − USD 100 user-recorded credit = USD 400 outstanding** is a synthetic example, not bank-confirmed payment.
-3. **Human decision gates:** independent source, financial review, acceptance, exact amount, and currency checks must be satisfied before a draft can be considered.
-4. **PayPal Sandbox:** draft creation is an explicitly authorized Sandbox action, with invoice ID/read-back reconciliation, duplicate-write blocking, and conservative `UNKNOWN` treatment for ambiguous or malformed provider responses. **No automatic sending or collecting payments.**
-5. **Auditability:** saved agreement versions, ledger revisions, and PayPal read-backs provide a readable trail of the decisions taken.
+## Product overview
 
-## Quick start — any fresh machine (no existing FairPay folders required)
+1. **AI-assisted agreement analysis.** Local Ollama with `qwen3:4b-instruct` proposes milestones, fees, deliverables, and source excerpts. Users check the source before accepting suggestions.
+2. **Source verification.** An incorrect $50 suggestion is corrected against an agreement that states $500.
+3. **Financial review.** Contract fees, manually recorded credits, and outstanding balances remain separate. $500 less a user-recorded $100 credit produces a **calculated $400 balance**. This credit is **not bank verified**.
+4. **Human safety gates.** Missing evidence, incomplete review, unresolved acceptance, or an amount mismatch can block invoice drafting.
+5. **PayPal Sandbox.** Explicitly authorized draft handling and read-back. The final video separately shows an **existing $400 Sandbox DRAFT**, **not sent or paid**.
 
-Requirements: **Node.js 22+**; **Python 3** optional for integrity checks; local **Ollama** and model for real AI extraction. Node application uses built-in Node modules and requires no third-party npm packages.
+These are **separate demonstration scenarios**, not a single completed or bank-verified payment. A fresh clone has **zero saved projects** and no access to the historical private Sandbox invoice.
+
+## Start here
+
+| Goal | Read |
+| --- | --- |
+| See the finished product demonstration | [Final demo video](https://www.youtube.com/watch?v=pivk3KyXpEQ) |
+| Understand the UI and explore fictional examples | [User Guide](docs/USER_GUIDE.md) |
+| Install, configure AI, and inspect code | [Developer Guide](docs/DEVELOPER_GUIDE.md) |
+| Follow a safe synthetic walkthrough | [Demo Guide](FairPay/DEMO_GUIDE.md) |
+| Evaluate test evidence and known limitations | [Validation & Limitations](docs/VALIDATION.md) |
+| Find more technical and historical documents | [Documentation Index](docs/README.md) |
+
+## Quick start
+
+Requires **Node.js 22+**. The Node application uses built-in modules and does not require installing npm dependencies.
 
 ```bash
-cd FairPay
-node --version
-python3 tools/verify-clean.py      # optional code-integrity check
-npm run setup                       # creates a local .env from .env.example
+git clone https://github.com/tai-tai-12/fairpay-ai.git
+cd fairpay-ai/FairPay
+npm run setup
 npm start
 ```
 
-Open **http://127.0.0.1:3000**. A fresh install deliberately starts with **zero saved projects**. Go to **Overview → Preview two safe billing decisions** to explore the two illustrative, read-only samples. Preview buttons only populate sample text and do not create a project, recognize a payment, or contact PayPal.
+Open **http://127.0.0.1:3000**. Choose **Overview → Preview two safe billing decisions**. The previews fill fictional source text only. They do not run AI analysis, save a project, contact PayPal, or record payment.
 
-**To run AI analysis (not just preview the UI):** install [Ollama](https://ollama.com/download) and start it locally; fetch the application model:
+For actual AI extraction, install and run [Ollama](https://ollama.com/download) locally, then run:
 
 ```bash
 ollama pull qwen3:4b-instruct
 ```
 
-The local Ollama app/service must be running. In **Agreements**, load the clear-fee sample, press Analyze, inspect the model's *candidate* results and source evidence, and save only after explicit review. Results can vary. Without Ollama, source extraction is **unavailable**; merely loading an example is not a successful AI demonstration.
+Without the running model, extraction is unavailable. PayPal API testing is optional and requires your **own Sandbox** credentials. See the [Developer Guide](docs/DEVELOPER_GUIDE.md).
 
-## PayPal Sandbox testing (optional)
-
-Create your **own** free Sandbox developer account and app at [PayPal Developer](https://developer.paypal.com/). On **your own machine**, enter its Sandbox credentials in the untracked `FairPay/.env` copied by `npm run setup`:
-
-```env
-PAYPAL_CLIENT_ID=your_own_sandbox_client_id
-PAYPAL_CLIENT_SECRET=your_own_sandbox_client_secret
-```
-
-Do **not** enter live credentials or publish your `.env`. The demo workflow uses explicit approvals; never create a new invoice just to inspect an already saved one. A new installation has no access to our pre-existing private Sandbox invoice ID or local historical ledger. Follow the steps in `FairPay/DEMO_GUIDE.md` for a safe synthetic walkthrough and use the app's Sandbox-only controls only when deliberately testing with your own synthetic data.
-
-## Tests and integrity
-
-```bash
-cd FairPay
-npm run qa:sprint-b
-python3 tools/verify-clean.py
-python3 tools/scan-clean.py
-```
-
-Current focused suite: **161 passing checks** (115 current regression + 8 scorer + 27 isolated HTTP baseline + 11 frozen adversarial), on the supplied clean candidate. A separate adversarial audit found and patched a malformed PayPal `due_amount` parsing bug (would otherwise have allowed a false `PAID` classification); malformed provider amounts now fail closed as `UNKNOWN`. **These automated checks use synthetic mocks**, and do not certify the full historical suite or production compliance. `FairPay/QA_STATUS.md` and `FairPay/KNOWN_LIMITATIONS.md` document those boundaries.
-
-## System design
+## Architecture at a glance
 
 ```text
-Agreement text / DOCX / PDF
-          |
-          v
-Local Ollama → untrusted candidate terms + source excerpts
-          |
-          v
-Source/provenance check → deterministic policy → human review
-          |
-          v
-Human-recorded ledger and acceptance → exact net authorization
-          |
-          v
-PayPal Sandbox invoice DRAFT → read-back / reconciliation / audit
+Agreement text or document
+     ↓
+Local AI proposes candidate terms and source excerpts
+     ↓
+Source verification + deterministic financial rules
+     ↓
+Human review, acceptance, and authorization
+     ↓
+PayPal Sandbox invoice DRAFT and read-back
 ```
 
-The **AI does not authorize payments**. This app runs at `127.0.0.1` and persists synthetic records locally; it has no buyer identity verification, bank settlement verification, production-grade authentication, or distributed transactional guarantee.
+- `FairPay/public/` contains the browser interface.
+- `FairPay/server.mjs` serves the local app and API routes.
+- `FairPay/agreement-evidence.mjs`, `financial-policy.mjs`, and `receivables.mjs` handle the evidence and financial model.
+- `FairPay/paypal-adapter.mjs` handles provider integration.
+- `FairPay/tests/`, `evaluation/`, `audit/`, and `tools/` contain regression checks, synthetic evaluation cases, audit checks, and setup utilities.
 
-## For judges
+## Evidence and limitations
 
-- Start here, then see `FairPay/DEMO_GUIDE.md`, `FairPay/ARCHITECTURE.md`, and `FairPay/KNOWN_LIMITATIONS.md`.
-- This repository contains **all application source code**, test fixtures, example configuration and the MIT license. The Ollama model itself is **not bundled** (download separately).
-- A hosted public demo is **not provided**. The runnable local build above is the functional demo pathway.
-- The submission video shows a separately maintained **synthetic project** and a verified **PayPal Sandbox DRAFT read-back**. The user-recorded credit is *not* independently verified; no payment was received.
-- All demo assets and examples must be synthetic; no API keys or client data are published.
+The release README previously reported **161 passing checks in the focused QA suite**. That is **not** a claim that all historical tests pass. Historical failures, incomplete browser checks, and provider-evidence boundaries remain documented. The documentation cleanup **does not rerun tests**.
 
-## Security, license and status
+The video depicts a separate existing Sandbox DRAFT read-back. Earlier isolated engineering QA **did not independently access the private Sandbox invoice**, so its remote verification result remains recorded as **incomplete**. The synthetic credit is not a bank-confirmed deposit. See [Validation & Limitations](docs/VALIDATION.md) and [Security & Privacy](FairPay/SECURITY_AND_PRIVACY.md).
 
-The app is intentionally **NON-RELEASE / SANDBOX ONLY**. Do not expose this loopback development service to the public internet. See `FairPay/SECURITY_AND_PRIVACY.md`. MIT License (`LICENSE`).
+The service binds to `127.0.0.1` and persists local records. It lacks production authentication, buyer identity verification, independent bank settlement verification, and secure hosted deployment. Never expose the app to the public internet.
+
+## License
+
+[MIT License](LICENSE). Copyright © 2026 FairPay AI Project Contributors.
